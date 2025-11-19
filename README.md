@@ -36,26 +36,23 @@ It brings together practical data engineering concepts such as async ingestion, 
 
 You can run the entire PokePipeline project using Docker. This option does not require Python, pip, or any local setup.
 
-### 1. Build the Docker image
-
+**1. Build the Docker image**
 ```bash
 docker build -t pokepipeline .
+```
+**2. Run the app**
+```bash
 docker run --rm -p 8501:8501 pokepipeline
 ```
-
-### 2. Start the Streamlit app
+**3. Start the Streamlit app**
 
 Now open the app in your browser:
-
-http://localhost:8501
+**http://localhost:8501**
 
 Inside the UI you can:
-
-Run the ETL pipeline
-
-Clear and reload the database
-
-Browse, search, and filter Pokemon data
+ - Run the ETL pipeline 
+ - Clear and reload the database
+ - Browse, search, and filter Pokemon data
 
 Everything runs inside the container.
 
@@ -71,8 +68,8 @@ Follow the steps below if you are using macOS.
 
 **1. Clone the repository and create a virtual environment**
 ```bash
-git clone https://github.com/Akash-Ad/
-cd Aventa_Coding_Challenge
+git clone https://github.com/Akash-Ad/pokemon-end-to-end-data-engineering.git
+cd pokemon-end-to-end-data-engineering
 
 python3 -m venv venv
 source venv/bin/activate
@@ -84,8 +81,8 @@ pip install -r requirements.txt
 export PYTHONPATH="."
 python -m pokepipeline.cli --limit 20 --offset 0
 ```
-**Expected output:**
-```text
+**Expected output**
+```bash
 requested=20 loaded=20
 ```
 
@@ -100,8 +97,8 @@ Follow the steps below if you are using Windows.
 
 **1. Clone the repository and create a virtual environment**
 ```powershell
-git clone https://github.com/Akash-Ad/
-cd 
+git clone https://github.com/Akash-Ad/pokemon-end-to-end-data-engineering.git
+cd pokemon-end-to-end-data-engineering
 
 python -m venv venv
 venv\Scripts\activate
@@ -113,7 +110,7 @@ $env:PYTHONPATH="."
 python -m pokepipeline.cli --limit 20 --offset 0
 ```
 **Expected output**
-```text
+```bash
 requested=20 loaded=20
 ```
 
@@ -134,23 +131,29 @@ The Streamlit UI provides:
 ## Project structure
 
 ```text
-pokepipeline/
-├── __init__.py
-├── config.py          # Database configuration
-├── db.py              # Engine, session, and schema utilities
-├── models.py          # ORM model definitions
-├── etl.py             # Extract / Transform / Load logic
-├── pipeline.py        # ETL orchestration logic
-└── cli.py             # Command-line entry point
-UI/
-└── streamlit_app.py   # Streamlit dashboard
-tests/
-├── test_transform.py  # Transformation unit tests
-└── test_db.py         # Database schema tests
-requirements.txt
-.gitignore
-README.md
-pokemon.db  (created automatically)
+pokemon-end-to-end-data-engineering/
+├── pokepipeline/
+│   ├── __init__.py
+│   ├── config.py          # Database configuration
+│   ├── db.py              # Engine, session, and schema utilities
+│   ├── models.py          # ORM model definitions
+│   ├── etl.py             # Extract / Transform / Load logic
+│   ├── pipeline.py        # ETL orchestration logic
+│   └── cli.py             # Command-line entry point
+│
+├── UI/
+│   └── streamlit_app.py   # Streamlit dashboard
+│
+├── tests/
+│   ├── test_transform.py  # Transformation unit tests
+│   └── test_db.py         # Database schema tests
+│
+├── Dockerfile             # Containerized deployment
+├── .dockerignore          # Files excluded from Docker builds
+├── requirements.txt       # Python dependencies
+├── .gitignore             # Git ignored files
+├── README.md              # Project documentation
+└── pokemon.db             # Generated automatically after running ETL (not stored in repo)
 ```
 
 ## Database Schema
