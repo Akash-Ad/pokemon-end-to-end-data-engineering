@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+pokemon.db
+.pytest_cache/
+.streamlit/
+.vscode/

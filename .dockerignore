@@ -1,0 +1,23 @@
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+venv/
+.env/
+
+# Git
+.git/
+
+# OS files
+.DS_Store
+
+# SQLite database (let container create its own)
+pokemon.db
+
+# Tests
+tests/
+
+# Local assets not needed inside the container
+image.png
